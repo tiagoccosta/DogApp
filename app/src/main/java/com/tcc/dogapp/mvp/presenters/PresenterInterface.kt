@@ -1,13 +1,18 @@
 package com.tcc.dogapp.mvp.presenters
 
-interface MainPresenterListener {
+import com.tcc.dogapp.mvp.models.Dog
+import com.tcc.dogapp.mvp.views.interfaces.ActivityBaseInterface
+
+interface PresenterInterface {
 
 
-    fun onIssueSelected(
+    fun onDogSelected(
         activity: ActivityBaseInterface,
-        issue: Issue
+        dog: Dog
     )
 
-    fun requestIssueList(activity: ActivityBaseInterface)
+    fun requestDogList(activity: ActivityBaseInterface)
+
+    fun requestDogImage(activity: ActivityBaseInterface, dog: Dog)
 
 }

@@ -10,17 +10,17 @@ import com.tcc.dogapp.mvp.models.Dog
 import java.util.*
 
 
-class IssueListAdapter(private val issueList: List<Dog>) : RecyclerView.Adapter<IssueListAdapter.ViewHolder>() {
+class DogBreedListAdapter(private val dogList: List<Dog>) : RecyclerView.Adapter<DogBreedListAdapter.ViewHolder>() {
     override fun getItemCount(): Int {
-        return issueList.size
+        return dogList.size
     }
 
-    private var issueClickListener: IssueClickListener? = null
+    private var dogClickListener: DogClickListener? = null
 
 
     init {
         Collections.sort<Dog>(
-            this.issueList
+            this.dogList
         ) { lhs, rhs -> lhs.hashCode() - rhs.hashCode() }
     }
 
@@ -30,25 +30,25 @@ class IssueListAdapter(private val issueList: List<Dog>) : RecyclerView.Adapter<
     }
 
     override fun onBindViewHolder(viewHolder: ViewHolder, i: Int) {
-        val issue = issueList[i]
-        viewHolder.issueTitle.text = issue.name
+        val issue = dogList[i]
+        viewHolder.dogName.text = issue.name
         viewHolder.rootView.setOnClickListener {
-            if (issueClickListener != null) {
-                issueClickListener!!.onIssueClicked(issue)
+            if (dogClickListener != null) {
+                dogClickListener!!.onDogClicked(issue)
             }
         }
     }
 
-    fun setIssueClickListener(issueClickListener: IssueClickListener) {
-        this.issueClickListener = issueClickListener
+    fun setDogClickListener(dogClickListener: DogClickListener) {
+        this.dogClickListener = dogClickListener
     }
 
     class ViewHolder(internal var rootView: View) : RecyclerView.ViewHolder(rootView) {
-        internal var issueTitle: TextView = rootView.findViewById(R.id.dog_title)
+        internal var dogName: TextView = rootView.findViewById(R.id.dog_title)
     }
 
-    interface IssueClickListener {
+    interface DogClickListener {
 
-        fun onIssueClicked(dog: Dog)
+        fun onDogClicked(dog: Dog)
     }
 }
