@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Dog App</string>
+    <string name="title_activity_dog">DogActivity</string>
+    <string name="title_activity_list">ListActivity</string>
+    <string name="dog_breed_list">Dog Breed List</string>
+</resources>
